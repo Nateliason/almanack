@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
         sessions: 'users/sessions'
       }
-  
+
+  resources :users, only: [:index, :show]
+
   resources :books
 
-  root 'books#index'
+  root 'users#index'
 end
