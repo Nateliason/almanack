@@ -1,0 +1,74 @@
+<%= form_for(@book) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div id="edit-book-form">
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :url, "Book URL on Amazon" %>
+      </div>
+      
+      <%= f.text_field :url, input_type: :text, class: "form-field", id: "url" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :title %>
+      </div>
+      
+      <%= f.text_field :title, input_type: :text, class: "form-field", id: "title" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :author %>
+      </div>
+      
+      <%= f.text_field :author, input_type: :text, class: "form-field", id: "author" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :rating %>
+      </div>
+      
+      <%= f.text_field :rating, input_type: :integer, class: "form-field", id: "rating" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :image, "Cover Image URL" %>
+      </div>
+      
+      <%= f.text_field :image, input_type: :url, class: "form-field", id: "image" %>
+    </div>
+
+    <div class="form-group">
+      <div class="form-label">
+          <%= f.label :notes %>
+      </div>
+      
+      <%= f.text_field :notes, input_type: :text, class: "form-field", id: "notes" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.submit :submit, class: "btn btn-primary", data: { disable_with: "Saving..." } %>
+    </div>
+    
+    <div>
+      <%= f.hidden_field :url %>
+    </div>
+
+  </div>
+
+<% end %>
